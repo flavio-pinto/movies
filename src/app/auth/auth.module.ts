@@ -4,7 +4,8 @@ import { LoginPage } from './login.page';
 import { SignupPage } from './signup.page';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './token.interceptor';
 
 
 
@@ -28,6 +29,12 @@ import { HttpClientModule } from '@angular/common/http';
       }
     ])
   ],
-  providers:[]
+  providers:[
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:TokenInterceptor,
+      multi:true
+    }
+  ]
 })
 export class AuthModule { }
