@@ -13,10 +13,10 @@ import { Component, OnInit } from '@angular/core';
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Movies</a>
+              <a class="nav-link active" aria-current="page" [routerLink]="['/movies']" routerLinkActive="active">Movies</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Profile</a>
+              <a class="nav-link" [routerLink]="['/user']" routerLinkActive="active">Profile</a>
             </li>
           </ul>
         </div>
