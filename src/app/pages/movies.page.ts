@@ -4,9 +4,11 @@ import { Movie } from '../models/movie';
 
 @Component({
   template: `
-    <p>
-      movies works!
-    </p>
+    <div class="container mt-5">
+      <div *ngFor="let movie of movies; let i = index">
+        <app-movie-card [movie]="movie"></app-movie-card>
+      </div>
+    </div>
   `,
   styles: [
   ]
@@ -19,6 +21,7 @@ export class MoviesPage implements OnInit {
   ngOnInit(): void {
     this.dbSrv.fetchMovies().subscribe((ris) => {
       console.log(ris);
+      this.movies = ris;
     })
   }
 

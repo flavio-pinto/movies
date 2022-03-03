@@ -7,13 +7,15 @@ import { AuthModule } from './auth/auth.module';
 import { NavbarComponent } from './components/navbar.component';
 import { MoviesPage } from './pages/movies.page';
 import { UserPage } from './pages/user.page';
+import { MovieCardComponent } from './components/movie-card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     MoviesPage,
-    UserPage
+    UserPage,
+    MovieCardComponent
   ],
   imports: [
     BrowserModule,
