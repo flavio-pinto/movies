@@ -27,6 +27,7 @@ import { AuthService } from "./auth.service";
             ></span>
           </button>
         </form>
+        <span>o <a class="text-decoration-underline" (click)="goRegister()">Registrati</a></span>
       </div>
     </div>
   `,
@@ -61,5 +62,9 @@ export class LoginPage implements OnInit {
       this.errorMessage = error
       console.error(error)
     }
+  }
+
+  goRegister() {
+    this.router.navigate(['/signup']);
   }
 }

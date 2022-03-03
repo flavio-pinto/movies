@@ -14,7 +14,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     path: 'user',
     component: UserPage
-  }
+  },
+  {
+    path: '',
+    redirectTo: 'movies',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({

@@ -1,5 +1,13 @@
 {
-  "users": [],
+  "users": [
+    {
+      "email": "a@b.it",
+      "password": "$2a$10$lBNkpEV/D0TxZVsdxIlg7Oet0nd/MW8/YCfA.pyPs0BSJ5HiFxaGq",
+      "name": "a",
+      "surname": "b",
+      "id": 1
+    }
+  ],
   "favorites": [
     {
       "movieId": 567189,
