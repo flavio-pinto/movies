@@ -9,19 +9,24 @@ import { AuthData } from '../auth/auth.service';
       <div class="row">
         <div class="col-3" *ngFor="let movie of movies; let i = index">
           <app-movie-card [movie]="movie">
-            <button [disabled]="isLoading" (click)="movie.favId ? remFavorite(movie.favId, i) : addFavorite(movie.movie.id, i)" [ngClass]="{
+            <button (click)="movie.favId ? remFavorite(movie.favId, i, $event) : addFavorite(movie.movie.id, i, $event)"
+            [ngClass]="{
               'text-danger': movie.favId,
               'text-dark': !movie.favId
             }" class="card mb-4" type="button" class="btn">
-              <i class="bi bi-heart-fill"></i>
+              <i class="bi bi-heart-fill disable-click"></i>
             </button>
           </app-movie-card>
         </div>
       </div>
     </div>
   `,
-  styles: [
-  ]
+  styles: [`
+    .disable-click {
+      pointer-events: none;
+      cursor: default;
+    }
+  `]
 })
 export class MoviesPage implements OnInit {
   movies!: MovieData[];
@@ -34,24 +39,26 @@ export class MoviesPage implements OnInit {
     this.movies = await this.dbSrv.fetchMovies();
   }
 
-  async addFavorite(movieId: number, index: number) {
-    this.isLoading = true;
+  async addFavorite(movieId: number, index: number, event: any) {
+    (event.target as HTMLButtonElement).disabled = true;
+    console.log(event);
+
     try {
       const newFav = await (await this.dbSrv.addFav(movieId)).toPromise();
       this.movies[index] = {...this.movies[index], favId: newFav.id};
-      this.isLoading = false;
+      (event.target as HTMLButtonElement).disabled = false;
     } catch (error) {
-      this.isLoading = false;
+
       alert(error);
     }
   }
 
-  async remFavorite(favId: number, index: number) {
-    this.isLoading = true;
+  async remFavorite(favId: number, index: number, event: any) {
+    (event.target as HTMLButtonElement).disabled = true;
     try {
       await this.dbSrv.remFav(favId).toPromise();
       this.movies[index].favId = undefined;
-      this.isLoading = false;
+      (event.target as HTMLButtonElement).disabled = false;
     } catch(error) {
       alert(error)
     }
