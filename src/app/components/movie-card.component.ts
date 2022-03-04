@@ -9,14 +9,15 @@ import { MovieData } from '../pages/dashboard.service';
       <div class="card" style="width: 18rem;">
         <img [src]="'http://image.tmdb.org/t/p/original' + movie.movie.poster_path" class="card-img-top" alt="...">
         <div class="card-body">
-          <button [ngClass]="{
+          <!-- <button [ngClass]="{
               'text-danger': movie.favId,
               'text-dark': !movie.favId
             }"
           class="card mb-4"
           type="button" class="btn">
             <i class="bi bi-heart-fill"></i>
-          </button>
+          </button> -->
+          <ng-content></ng-content>
         </div>
       </div>
     </div>
@@ -30,8 +31,5 @@ export class MovieCardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.movie);
-
   }
-
 }

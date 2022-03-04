@@ -8,7 +8,14 @@ import { AuthData } from '../auth/auth.service';
     <div class="container mt-5">
       <div class="row">
         <div class="col-3" *ngFor="let movie of movies; let i = index">
-          <app-movie-card [movie]="movie"></app-movie-card>
+          <app-movie-card [movie]="movie">
+            <button (click)="movie.favId ? remFavorite(movie.favId, i) : addFavorite(movie.movie.id, i)" [ngClass]="{
+              'text-danger': movie.favId,
+              'text-dark': !movie.favId
+            }" class="card mb-4" type="button" class="btn">
+              <i class="bi bi-heart-fill"></i>
+            </button>
+          </app-movie-card>
         </div>
       </div>
     </div>
@@ -21,12 +28,7 @@ export class MoviesPage implements OnInit {
 
   constructor(private dbSrv: DashboardService) { }
 
-  /* ngOnInit(): void {
-    this.dbSrv.fetchMovies().subscribe((ris) => {
-      console.log(ris);
-      this.movies = ris;
-    })
-  } */
+
   async ngOnInit() {
     this.movies = await this.dbSrv.fetchMovies();
   }
@@ -43,10 +45,9 @@ export class MoviesPage implements OnInit {
   async remFavorite(favId: number, index: number) {
     try {
       await this.dbSrv.remFav(favId).toPromise();
-      this.movies.splice(index, 1)
+      this.movies[index].favId = undefined;
     } catch(error) {
       alert(error)
     }
   }
-
 }
