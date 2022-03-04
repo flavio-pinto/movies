@@ -20,7 +20,7 @@ export class DashboardService {
 
   async fetchMovies(): Promise<MovieData[]> {
     //return this.http.get<Movie[]>(`${environment.apiBaseUrl}/movies-popular`)
-    const user = (await this.authSrv.user$.pipe(take(1)).toPromise()) as AuthData;
+    const user = await this.authSrv.user$.pipe(take(1)).toPromise() as AuthData;
     const movies = await this.http.get<Movie[]>(`${environment.apiBaseUrl}/movies-popular`).toPromise();
     const fav = await this.http.get<Favorite[]>(`${environment.apiBaseUrl}/favorites?userId=${user.user.id}`).toPromise();
 
