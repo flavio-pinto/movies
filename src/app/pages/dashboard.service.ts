@@ -30,9 +30,10 @@ export class DashboardService {
     }));
   }
 
-  async addFav(movieId: number, userId: number) {
+  async addFav(movieId: number) {
+    const user = (await this.authSrv.user$.pipe(take(1)).toPromise()) as AuthData;
     return this.http.post<Favorite>(`${environment.apiBaseUrl}/favorites`, {
-      userId,
+      userId: user.user.id,
       movieId
     })
   }

@@ -7,10 +7,16 @@ import { MovieData } from '../pages/dashboard.service';
   template: `
     <div class="container">
       <div class="card" style="width: 18rem;">
-        <!-- <img [src]="'http://image.tmdb.org/t/p/original' + movie.poster_path" class="card-img-top" alt="..."> -->
         <img [src]="'http://image.tmdb.org/t/p/original' + movie.movie.poster_path" class="card-img-top" alt="...">
         <div class="card-body">
-          <button type="button" class="btn"><i class="bi bi-heart-fill"></i></button>
+          <button [ngClass]="{
+              'text-danger': movie.favId,
+              'text-dark': !movie.favId
+            }"
+          class="card mb-4"
+          type="button" class="btn">
+            <i class="bi bi-heart-fill"></i>
+          </button>
         </div>
       </div>
     </div>
