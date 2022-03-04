@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from './dashboard.service';
 import { Movie } from '../models/movie';
+import { MovieData } from './dashboard.service';
 
 @Component({
   template: `
@@ -16,15 +17,20 @@ import { Movie } from '../models/movie';
   ]
 })
 export class MoviesPage implements OnInit {
-  movies!: Movie[];
+  movies!: MovieData[];
 
   constructor(private dbSrv: DashboardService) { }
 
-  ngOnInit(): void {
+  /* ngOnInit(): void {
     this.dbSrv.fetchMovies().subscribe((ris) => {
       console.log(ris);
       this.movies = ris;
     })
+  } */
+  async ngOnInit() {
+    this.movies = await this.dbSrv.fetchMovies();
+    console.log(this.movies);
+
   }
 
 }
