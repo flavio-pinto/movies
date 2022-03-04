@@ -6,6 +6,13 @@
       "name": "a",
       "surname": "b",
       "id": 1
+    },
+    {
+      "email": "alfonsoceruzzi@alfonso.it",
+      "password": "$2a$10$0S/NzKpKs8q5jGClL0FhceTypkqthlbLJ74cckOdWToCBf9gbvobi",
+      "name": "Alfonso",
+      "surname": "Ceruzzi",
+      "id": 2
     }
   ],
   "favorites": [
@@ -28,6 +35,26 @@
       "userId": 1,
       "movieId": 573680,
       "id": 14
+    },
+    {
+      "userId": 2,
+      "movieId": 635302,
+      "id": 15
+    },
+    {
+      "userId": 2,
+      "movieId": 804435,
+      "id": 16
+    },
+    {
+      "userId": 2,
+      "movieId": 460465,
+      "id": 17
+    },
+    {
+      "userId": 1,
+      "movieId": 460465,
+      "id": 18
     }
   ],
   "genres": [

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -19,6 +20,10 @@ import { Component, OnInit } from '@angular/core';
               <a class="nav-link" [routerLink]="['/user']" routerLinkActive="active">Profile</a>
             </li>
           </ul>
+          <div *ngIf="isLoggedIn" class="ms-auto">
+            <p class="d-inline username-welc-back">Bentornato <span class="fst-italic fw-bolder">{{welcomeUser}}</span></p>
+            <button class="btn btn-danger mx-3" (click)="onLogout()">logout</button>
+          </div>
         </div>
       </div>
     </nav>
@@ -27,10 +32,23 @@ import { Component, OnInit } from '@angular/core';
   ]
 })
 export class NavbarComponent implements OnInit {
+  isLoggedIn: boolean = false;
+  welcomeUser!: string | undefined;
 
-  constructor() { }
+  constructor(private authSrv: AuthService) { }
+
+  onLogout() {
+    this.authSrv.logout();
+  }
 
   ngOnInit(): void {
+    this.authSrv.isLoggedIn$.subscribe((isLoggedIn) => {
+      this.isLoggedIn = isLoggedIn;
+    })
+
+    this.authSrv.user$.subscribe((data) => {
+      this.welcomeUser = data?.user.name;
+    })
   }
 
 }
