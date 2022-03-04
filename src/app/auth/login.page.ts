@@ -51,13 +51,6 @@ export class LoginPage implements OnInit {
       form.reset()
       this.errorMessage=undefined
       this.router.navigate(['/movies'])
-
-      // this.authSrv.user$.subscribe(val=>{
-      //   console.log('user state da BehaviorSubject',val)
-      // })
-      // this.authSrv.user2$.subscribe(val=>{
-      //   console.log('user state Subject',val)
-      // })
     } catch (error:any) {
       this.errorMessage = error
       console.error(error)

@@ -5,8 +5,10 @@ import { Movie } from '../models/movie';
 @Component({
   template: `
     <div class="container mt-5">
-      <div *ngFor="let movie of movies; let i = index">
-        <app-movie-card [movie]="movie"></app-movie-card>
+      <div class="row">
+        <div class="col-3" *ngFor="let movie of movies; let i = index">
+          <app-movie-card [movie]="movie"></app-movie-card>
+        </div>
       </div>
     </div>
   `,
