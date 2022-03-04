@@ -79,7 +79,6 @@ export class SignupPage implements OnInit {
 
   async onsubmit(form: NgForm) {
     this.isLoading = true;
-    console.log(form);
     try {
       await this.authSrv.signup(form.value).toPromise();
       form.reset();

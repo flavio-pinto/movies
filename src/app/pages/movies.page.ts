@@ -41,7 +41,6 @@ export class MoviesPage implements OnInit {
 
   async addFavorite(movieId: number, index: number, event: any) {
     (event.target as HTMLButtonElement).disabled = true;
-    console.log(event);
 
     try {
       const newFav = await (await this.dbSrv.addFav(movieId)).toPromise();
