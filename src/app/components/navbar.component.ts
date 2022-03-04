@@ -4,7 +4,7 @@ import { AuthService } from '../auth/auth.service';
 @Component({
   selector: 'app-navbar',
   template: `
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav *ngIf="isLoggedIn" class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
         <a class="navbar-brand" href="#">Menu</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"

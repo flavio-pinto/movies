@@ -4,7 +4,7 @@ import { AuthService } from "./auth.service";
 
 @Component({
   template: `
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-5 w-25 text-center border p-3 mx-auto">
       <div class="col-6">
       <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
           {{errorMessage}}

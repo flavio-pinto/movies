@@ -55,6 +55,21 @@
       "userId": 1,
       "movieId": 460465,
       "id": 18
+    },
+    {
+      "userId": 1,
+      "movieId": 615457,
+      "id": 19
+    },
+    {
+      "userId": 1,
+      "movieId": 578701,
+      "id": 20
+    },
+    {
+      "userId": 1,
+      "movieId": 632357,
+      "id": 21
     }
   ],
   "genres": [
